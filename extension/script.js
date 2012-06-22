@@ -17,8 +17,8 @@ var findArtists = function(selector) {
 
 var addTomahawkArtistLink = function(node, artist) {
 	var link = document.createElement("a");
-	link.href = "tomahawk://view/artist" + buildQueryString({ name: artist });
-	//link.href = "http://toma.hk/" + buildQueryString({ artist: artist });
+	//link.href = "tomahawk://view/artist" + buildQueryString({ name: artist });
+	link.href = "http://toma.hk/artist/" + encodeURIComponent(artist);
 	//link.innerHTML = "▶";
 	link.style.background = "url(http://www.tomahawk-player.org/assets/ico/favicon.ico) no-repeat right center";
 	link.style.marginRight = "5px";
