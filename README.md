@@ -1,4 +1,5 @@
-songkick-venue-player
-=====================
+Songkick Venue Player
+========================
 
-Chrome extension; play artists on Songkick venue listings
+Google Chrome extension.
+Add audio resolver/player links (e.g. Spotify, Tomahawk) to Songkick venue pages.

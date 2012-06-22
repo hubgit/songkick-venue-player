@@ -1,0 +1,12 @@
+{
+  "name": "Songkick Venue Player",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Add audio resolver/player links to Songkick venue pages",
+  "content_scripts": [
+    {
+      "matches" : ["http://www.songkick.com/venues/*"],
+      "js" : ["script.js"]
+    }
+  ]
+}
