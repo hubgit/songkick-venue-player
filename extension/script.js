@@ -17,8 +17,8 @@ var findArtists = function(selector) {
 
 var addTomahawkArtistLink = function(node, artist) {
 	var link = document.createElement("a");
-	link.href = "tomahawk://view/artist" + buildQueryString({ name: artist });
-	//link.href = "http://toma.hk/" + buildQueryString({ artist: artist });
+	//link.href = "tomahawk://view/artist" + buildQueryString({ name: artist });
+	link.href = "http://toma.hk/artist/" + encodeURIComponent(artist);
 	//link.innerHTML = "▶";
 	link.style.background = "url(http://www.tomahawk-player.org/assets/ico/favicon.ico) no-repeat right center";
 	link.style.marginRight = "5px";
@@ -54,19 +54,27 @@ var addSpotifyTrackLinks = function(node, artist) {
 			if (!data.tracks || !data.tracks.length) return;
 
 			data.tracks.slice(0, 1).forEach(function(track) {
-				node.appendChild(buildSpotifyTrackEmbed(track));
+				node.appendChild(buildTomahawkTrackEmbed(track, artist));
 			});
 		}
 	};
 	xhr.send(null);
 };
 
-var buildSpotifyTrackEmbed = function(track) {
-	var object = document.createElement("object");
+var buildTomahawkTrackEmbed = function(track, artist) {
+	var object = document.createElement("iframe");
 	object.setAttribute("type", "text/html");
+
+	var url = "http://toma.hk/embed.php?artist="+encodeURIComponent(artist)+"&title="+encodeURIComponent(track.name);
+
+	object.setAttribute("scrolling", "no");
+	object.setAttribute("frameborder", "0");
+	object.setAttribute("allowtransparency", "true");
+	object.setAttribute("src", url);
+
 	object.setAttribute("data", "https://embed.spotify.com/" + buildQueryString({ uri: track.href }));
 	object.style.width = "300px";
-	object.style.height = "80px";
+	object.style.height = "300px";
 	object.style.margin = "10px 0";
 	object.style.display = "block";
 	object.style.clear = "both";
