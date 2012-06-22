@@ -54,14 +54,14 @@ var addSpotifyTrackLinks = function(node, artist) {
 			if (!data.tracks || !data.tracks.length) return;
 
 			data.tracks.slice(0, 1).forEach(function(track) {
-				node.appendChild(buildSpotifyTrackEmbed(track, artist));
+				node.appendChild(buildTomahawkTrackEmbed(track, artist));
 			});
 		}
 	};
 	xhr.send(null);
 };
 
-var buildSpotifyTrackEmbed = function(track, artist) {
+var buildTomahawkTrackEmbed = function(track, artist) {
 	var object = document.createElement("iframe");
 	object.setAttribute("type", "text/html");
 
