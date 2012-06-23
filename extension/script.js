@@ -11,14 +11,13 @@ var findArtists = function(selector) {
 		var artist = artistNode.textContent.trim();
 
 		addTomahawkArtistLink(artistNode.insertBefore(document.createElement("span"), artistNode.firstChild), artist);
-		addSpotifyTrackLinks(node.appendChild(document.createElement("div")), artist);
+		addSpotifyTrackEmbed(node.appendChild(document.createElement("div")), artist);
 	}
 };
 
 var addTomahawkArtistLink = function(node, artist) {
 	var link = document.createElement("a");
-	link.href = "tomahawk://view/artist" + buildQueryString({ name: artist });
-	//link.href = "http://toma.hk/" + buildQueryString({ artist: artist });
+	link.href = "http://toma.hk/artist/" + encodeURIComponent(artist);
 	//link.innerHTML = "▶";
 	link.style.background = "url(http://www.tomahawk-player.org/assets/ico/favicon.ico) no-repeat right center";
 	link.style.marginRight = "5px";
@@ -30,20 +29,7 @@ var addTomahawkArtistLink = function(node, artist) {
 	node.appendChild(link);
 };
 
-/*
-var addTomahawkEmbed = function(node, artist) {
-	var object = document.createElement("object");
-	object.setAttribute("type", "text/html");
-	object.setAttribute("data", "http://toma.hk/embed.php" + buildQueryString({ artist: artist }));
-	object.style.width = "100%";
-	object.style.height = "200px";
-	object.style.margin = "10px 0";
-
-	node.appendChild(object);
-}
-*/
-
-var addSpotifyTrackLinks = function(node, artist) {
+var addSpotifyTrackEmbed = function(node, artist) {
 	var query = 'artist:"' + artist + '"';
 
 	var xhr = new XMLHttpRequest();
@@ -101,7 +87,7 @@ var buildQueryString = function(items) {
 var openNewWindow = function(event) {
 	event.preventDefault();
 	event.stopPropagation();
-	window.open(event.target.href, "Resolver", "menubar=no,toolbar=no,location=yes,height=500,width=800");
+	window.open(event.target.href, "Resolver", "menubar=no,toolbar=no,location=no,height=500,width=800");
 }
 
 findArtists({
