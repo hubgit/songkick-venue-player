@@ -1,6 +1,6 @@
 {
   "name": "Songkick Venue Player",
-  "version": "1.0",
+  "version": "1.0.1",
   "manifest_version": 2,
   "description": "Add audio resolver/player links to Songkick venue pages",
   "content_scripts": [
