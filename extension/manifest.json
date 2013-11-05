@@ -5,7 +5,7 @@
   "description": "Add audio resolver/player links to Songkick venue pages",
   "content_scripts": [
     {
-      "matches" : ["http://www.songkick.com/venues/*"],
+      "matches" : ["https://www.songkick.com/venues/*"],
       "js" : ["script.js"]
     }
   ]

@@ -91,6 +91,6 @@ var openNewWindow = function(event) {
 }
 
 findArtists({
-	"event": ".event-listings > li",
-	"artist": ".artists strong",
+	"event": ".event-listings > li[itemscope][itemtype='http://schema.org/Event']",
+	"artist": ".artists strong[itemprop=name]",
 });
